@@ -85,7 +85,6 @@ export default function VerticalLinearStepper({
             >
               <div
                 className="flex flex-row w-full justify-between text-base text-[#4D4D4D]"
-                style={{ fontFamily: "Nunito, sans-serif" }}
               >
                 <div className="font-semibold">{step.label}</div>
                 <div className="font-extrabold ">{step.value}</div>

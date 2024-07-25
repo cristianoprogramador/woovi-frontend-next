@@ -7,12 +7,22 @@ import {
   Box,
   Button,
   Collapse,
+  FormControl,
   IconButton,
   IconButtonProps,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
   styled,
+  TextField,
 } from "@mui/material";
-import { ExpandMore } from "@mui/icons-material";
+import { CreditCard, ExpandMore } from "@mui/icons-material";
 import VerticalLinearFinalStepper from "@/components/verticalLinearFinalStepper";
+import CpfInput from "@/components/cpfInput";
+import ExpiryDateInput from "@/components/expiryDateInput";
+import CvvInput from "@/components/cvvInput";
+import CreditCardInput from "@/components/creditcard";
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -32,9 +42,21 @@ const ExpandMoreIcon = styled((props: ExpandMoreProps) => {
 const FormCreditCardPage = () => {
   const [id, setId] = useState<string | null>(null);
   const [expanded, setExpanded] = useState(false);
+  const [parcela, setParcela] = useState("");
+  const [nome, setNome] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [expiryDate, setExpiryDate] = useState("");
+  const [cvv, setCvv] = useState("");
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const handleChangeParcela = (
+    event: SelectChangeEvent<string>
+  ) => {
+    setParcela(event.target.value);
   };
 
   useEffect(() => {
@@ -61,6 +83,18 @@ const FormCreditCardPage = () => {
     );
   }
 
+  const handleSubmit = () => {
+    console.log({
+      nome,
+      cpf,
+      cardNumber,
+      expiryDate,
+      cvv,
+      parcela,
+    });
+    alert("Informações enviadas com sucesso!");
+  };
+
   return (
     <div className="flex flex-col min-h-screen w-full justify-start items-center">
       <div className="w-full flex flex-col justify-center items-center">
@@ -71,9 +105,42 @@ const FormCreditCardPage = () => {
           João, pague o restante em {option.installments}x no cartão
         </div>
         <div className="w-[90%] max-w-[430px] flex flex-col justify-center items-center">
-          <div>Formulario</div>
+          <div className="mt-6 w-full flex flex-col gap-5">
+            <FormControl className="flex w-full" variant="outlined">
+              <TextField
+                id="nome-completo"
+                label="Nome completo"
+                variant="outlined"
+                fullWidth
+              />
+            </FormControl>
+            <CpfInput value={cpf} onChange={setCpf} />
+            <CreditCardInput value={cardNumber} onChange={setCardNumber} />
+            <div className="flex flex-row gap-5 w-full">
+              <ExpiryDateInput value={expiryDate} onChange={setExpiryDate} />
+              <CvvInput value={cvv} onChange={setCvv} />
+            </div>
+            <FormControl className="flex w-full" variant="outlined">
+              <InputLabel id="parcelas-label">Parcelas</InputLabel>
+              <Select
+                id="parcelas"
+                labelId="parcelas-label"
+                value={parcela}
+                onChange={handleChangeParcela}
+                label="Parcelas"
+                fullWidth
+              >
+                {parcelOptions.slice(1).map((option) => (
+                  <MenuItem key={option.id} value={option.id}>
+                    {option.installments}x de {option.installmentAmount}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
 
           <Button
+            onClick={handleSubmit}
             sx={{
               textTransform: "none",
               backgroundColor: "#133A6F",
@@ -81,7 +148,7 @@ const FormCreditCardPage = () => {
             }}
             className="bg-[#133A6F] px-5 py-1 mt-4 font-semibold text-lg flex flex-row gap-3 text-white rounded-md w-full"
           >
-            <div style={{ fontFamily: "Nunito, sans-serif" }}>Pagar</div>
+            <div>Pagar</div>
           </Button>
 
           <div className="mt-4">

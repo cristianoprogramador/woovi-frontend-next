@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import theme from "@/themes/themes";
 
 export const metadata: Metadata = {
   title: "Woovi - Frontend",
@@ -13,7 +15,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

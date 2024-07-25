@@ -103,7 +103,7 @@ const PixCreditCardPage = () => {
             }
             className="bg-[#133A6F] px-5 py-2 mt-4 font-semibold text-lg flex flex-row gap-3 text-white rounded-md"
           >
-            <div style={{ fontFamily: "Nunito, sans-serif" }}>{buttonText}</div>
+            <div>{buttonText}</div>
           </Button>
 
           <div className="mt-4">
@@ -166,7 +166,7 @@ const PixCreditCardPage = () => {
                 }}
                 className="bg-[#133A6F] px-5 py-2 font-semibold text-lg flex flex-row gap-3 text-white rounded-md"
               >
-                <div style={{ fontFamily: "Nunito, sans-serif" }}>
+                <div>
                   Continuar
                 </div>
               </Button>
