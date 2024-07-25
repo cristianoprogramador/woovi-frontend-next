@@ -196,7 +196,7 @@ const HomePage = () => {
                                 {value.installments}x
                               </div>
                               <div className="font-semibold">
-                                R$ {value.installmentAmount}
+                                {value.installmentAmount}
                               </div>
                             </div>
                           </div>
