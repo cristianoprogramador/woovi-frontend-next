@@ -2,7 +2,6 @@ import { v4 as uuidv4 } from "uuid";
 
 export const parcelOptions = [
   {
-    // id: uuidv4(),
     id: uuidv4(),
     installments: 1,
     installmentAmount: "R$ 30.500,00",

@@ -34,7 +34,7 @@ const CustomCheckedIcon = () => {
   );
 };
 
-export default function HomePage() {
+const HomePage = () => {
   const [checked, setChecked] = useState<string | null>(null);
   const router = useRouter();
   const secondArray = parcelOptions.slice(1);
@@ -123,7 +123,6 @@ export default function HomePage() {
                             checked={checked === value.id}
                             icon={<CustomUncheckedIcon />}
                             checkedIcon={<CustomCheckedIcon />}
-                            inputProps={{ "aria-labelledby": labelId }}
                           />
                         </div>
                         <div className="flex flex-row justify-between">
@@ -189,7 +188,6 @@ export default function HomePage() {
                               checked={checked === value.id}
                               icon={<CustomUncheckedIcon />}
                               checkedIcon={<CustomCheckedIcon />}
-                              inputProps={{ "aria-labelledby": labelId }}
                             />
                           </div>
                           <div className="flex flex-row justify-between">
@@ -259,4 +257,6 @@ export default function HomePage() {
       </div>
     </Fade>
   );
-}
+};
+
+export default HomePage;
