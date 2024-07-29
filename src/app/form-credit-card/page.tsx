@@ -109,7 +109,7 @@ const FormCreditCardPage = () => {
             <Image alt="logo" src="/logo-woovi.png" width={124} height={37} />
           </div>
           <div className="mt-10 font-extrabold text-2xl text-center px-4">
-            João, pague o restante em {option.installments}x no cartão
+            João, pague o restante em {option.installments - 1}x no cartão
           </div>
           <div className="w-[90%] max-w-[430px] flex flex-col justify-center items-center">
             <div className="mt-6 w-full flex flex-col gap-5">
@@ -138,7 +138,7 @@ const FormCreditCardPage = () => {
                   fullWidth
                 >
                   <MenuItem key={option.id} value={option.id}>
-                    {option.installments}x de {option.installmentAmount}
+                    {option.installments - 1}x de {option.installmentAmount}
                   </MenuItem>
                 </Select>
               </FormControl>

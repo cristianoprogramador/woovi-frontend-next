@@ -102,7 +102,6 @@ const HomePage = () => {
                 Pix
               </div>
               {[parcelOptions[0]].map((value) => {
-                const labelId = `checkbox-list-secondary-label-${value.id}`;
                 return (
                   <ListItem key={value.id} disablePadding>
                     <ListItemButton
@@ -161,7 +160,6 @@ const HomePage = () => {
                 Pix Parcelado
               </div>
               {secondArray.map((value, index) => {
-                const labelId = `checkbox-list-secondary-label-${value}`;
                 const { borderClass, roundClass, lineClass } = getClassNames(
                   index,
                   secondArray.length,
